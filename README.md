@@ -1,5 +1,3 @@
-# async-samples
+# async-codelab
 
-## TODO
-
-- [ ] 使用 rxjs 实现 async 的各个功能
+Learning [async](https://github.com/caolan/async) utilities by examples
