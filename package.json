@@ -1,7 +1,7 @@
 {
   "name": "async-utility",
   "version": "1.0.0",
-  "description": "git submodule project 2",
+  "description": "async codelab",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
