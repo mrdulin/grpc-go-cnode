@@ -1,0 +1,506 @@
+{
+  "data": [
+    {
+      "query": "jquery",
+      "body": {
+        "Error": "0",
+        "Time": 0.0528,
+        "Total": "103",
+        "Page": 1,
+        "Books": [
+          {
+            "ID": 1440651970,
+            "Title": "jQuery Cookbook",
+            "SubTitle": "Solutions & Examples for jQuery Developers",
+            "Description":
+              "Getting started with the jQuery library is easy, but it can take years to fully realize its breadth and depth; jQuery Cookbook shortens the learning curve considerably. You'll learn patterns and practices from 19 leading developers who use jQuery for ...",
+            "Image": "http://s.it-ebooks-api.info/3/jquery_cookbook.jpg",
+            "isbn": "9780596159771"
+          },
+          {
+            "ID": 1310572184,
+            "Title": "jQuery Mobile Cookbook",
+            "SubTitle":
+              "Over 80 recipes with examples and practical tips to help you quickly learn and develop cross-platform applications with jQuery Mobile",
+            "Description":
+              "jQuery Mobile is an award winning, HTML5/CSS3 based open source cross-platform UI framework. It offers a very cool and highly customizable UX. It is built on the popular jQuery library and uses declarative coding making it  easy to use and learn. It ...",
+            "Image": "http://s.it-ebooks-api.info/14/jquery_mobile_cookbook.jpg",
+            "isbn": "9781849517225"
+          },
+          {
+            "ID": 3953399298,
+            "Title": "WordPress 3.0 jQuery",
+            "SubTitle": "Enhance your WordPress website with the captivating effects of jQuery",
+            "Description":
+              "This easy-to-use guide will walk you through the ins and outs of creating sophisticated, professional enhancements and features, specially tailored to take advantage of the WordPress personal publishing platform. It will walk you through clear, step- ...",
+            "Image": "http://s.it-ebooks-api.info/14/wordpress_3.0_jquery.jpg",
+            "isbn": "9781849511742"
+          },
+          {
+            "ID": 4038148199,
+            "Title": "jQuery Hotshot",
+            "SubTitle":
+              "Ten practical projects that exercise your skill, build your confidence, and help you master jQuery",
+            "Description":
+              "jQuery is used by millions of people to write JavaScript more easily and more quickly. It has become the standard tool for web developers and designers to add dynamic, interactive elements to their sites, smoothing out browser inconsistencies and red ...",
+            "Image": "http://s.it-ebooks-api.info/14/jquery_hotshot.jpg",
+            "isbn": "9781849519106"
+          },
+          {
+            "ID": 382505003,
+            "Title": "Joomla! 1.5 JavaScript jQuery",
+            "SubTitle": "Enhance your Joomla! sites with the power of jQuery extensions, plugins, and more",
+            "Description":
+              "Ever wondered how all the great-looking, feature packed, amazing Joomla! sites are made? Would you like to add image transitions, popups, scrolls, AJAX forms, image galleries, no-page reloads to your website, but are worried that they will be difficu ...",
+            "Image": "http://s.it-ebooks-api.info/14/joomla_1.5_javascript_jquery.jpg",
+            "isbn": "9781849512046"
+          },
+          {
+            "ID": 3100731663,
+            "Title": "jQuery Game Development Essentials",
+            "SubTitle": "Learn how to make fun and addictive multi-platform games using jQuery",
+            "Description":
+              "jQuery is a leading multi-browser JavaScript library that developers across the world utilize on a daily basis to help simplify client-side scripting. Using the friendly and powerful jQuery to create games based on DOM manipulations and CSS transform ...",
+            "Image": "http://s.it-ebooks-api.info/14/jquery_game_development_essentials.jpg",
+            "isbn": "9781849695060"
+          },
+          {
+            "ID": 3938814885,
+            "Title": "jQuery Mobile Web Development Essentials, 2nd Edition",
+            "SubTitle":
+              "Build mobile-optimized websites using the simple, practical, and powerful jQuery-based framework",
+            "Description":
+              "jQuery Mobile is a unified, HTML5-based user interface system for all popular mobile device platforms. It is the most practical HTML / JavaScript framework available today. In this tutorial, you will learn how to use jQuery Mobile with your HTML page ...",
+            "Image": "http://s.it-ebooks-api.info/14/jquery_mobile_web_development_essentials_2nd_edition.jpg",
+            "isbn": "9781782167891"
+          },
+          {
+            "ID": 3762433730,
+            "Title": "Beginning jQuery 2 for ASP.NET Developers",
+            "SubTitle": "Using jQuery 2 with ASP.NET Web Forms and ASP.NET MVC",
+            "Description":
+              "jQuery is the most popular JavaScript library in use today, appearing on nearly two thirds of the 10,000 most visited sites on the web. With this sort of popularity, it's clear that ASP.NET developers can't afford to miss out.nnBy combining jQuery ...",
+            "Image": "http://s.it-ebooks-api.info/6/beginning_jquery_2_for_asp.net_developers.jpg",
+            "isbn": "9781430263043"
+          },
+          {
+            "ID": 1361328902,
+            "Title": "Mastering jQuery UI",
+            "SubTitle":
+              "Become an expert in creating real-world Rich Internet Applications using the varied components of jQuery UI",
+            "Description":
+              "With browsers becoming more and more powerful each day, the jQuery UI library provides tools that can be used to create feature rich and interactive applications without bearing the pain of writing numerous lines of JavaScript.nnMastering jQuery UI ...",
+            "Image": "http://s.it-ebooks-api.info/14/mastering_jquery_ui.jpg",
+            "isbn": "9781783286652"
+          },
+          {
+            "ID": 187818849,
+            "Title": "Mastering jQuery",
+            "SubTitle": "Elevate your development skills by leveraging every available ounce of jQuery",
+            "Description":
+              "Mastering jQuery has been written not only to help maximize your skills with core functionality in the library, but also to explore some of the more intriguing ways of using the library to achieve real-world solutions that could feature on any websit ...",
+            "Image": "http://s.it-ebooks-api.info/14/mastering_jquery.jpg",
+            "isbn": "9781783985463"
+          }
+        ]
+      }
+    },
+    {
+      "query": "react",
+      "body": {
+        "Error": "0",
+        "Time": 0.0708,
+        "Total": "24",
+        "Page": 1,
+        "Books": [
+          {
+            "ID": 854427009,
+            "Title": "React.js Essentials",
+            "SubTitle": "A fast-paced guide to designing and building scalable and maintainable web apps with React.js",
+            "Description":
+              "Building web applications with maintainable and performant user interfaces is a challenge that many have faced for more than a decade, but no one has risen to this challenge quite like React.js. Today React.js is used by Facebook, Instagram, Khan Aca ...",
+            "Image": "http://s.it-ebooks-api.info/14/react.js_essentials.jpg",
+            "isbn": "9781783551620"
+          },
+          {
+            "ID": 3104853612,
+            "Title": "Getting Started with React Native",
+            "SubTitle":
+              "Learn to build modern native iOS and Android applications using JavaScript and the incredible power of React",
+            "Description":
+              "React Native is a game-changing approach to hybrid mobile development. Web developers can leverage their existing skills to write mobile applications in JavaScript that are truly native without using cross-compilation or web views. These applications ...",
+            "Image": "http://s.it-ebooks-api.info/14/getting_started_with_react_native.jpg",
+            "isbn": "9781785885181"
+          },
+          {
+            "ID": 795976860,
+            "Title": "Pro React",
+            "SubTitle": "Build complex front-end applications in a composable way with React",
+            "Description":
+              "This book teaches you how to successfully structure increasingly complex front-end applications and interfaces. You'll explore the React library in depth, as well as detailing additional tools and libraries in the React ecosystem, enabling you to cre ...",
+            "Image": "http://s.it-ebooks-api.info/6/pro_react.jpg",
+            "isbn": "9781484212615"
+          },
+          {
+            "ID": 3143079455,
+            "Title": "Mastering React",
+            "SubTitle": "Master the art of building modern web applications using React",
+            "Description":
+              "React stands out in the web framework crowd through its approach to composition. This approach yields blazingly fast rendering capabilities. This book will help you understand what makes React special. It starts with the fundamentals and uses a pragm ...",
+            "Image": "http://s.it-ebooks-api.info/14/mastering_react.jpg",
+            "isbn": "9781783558568"
+          },
+          {
+            "ID": 3660596204,
+            "Title": "Learning React",
+            "SubTitle": "Functional Web Development with React and Flux",
+            "Description":
+              "Interested in React but find yourself confused about how to use it with the Flux architecture? This is your book. Authors Alex Banks and Eve Porcello show you how to build React applications with the entire React ecosystemu2014including Flux. You'll le ...",
+            "Image": "http://s.it-ebooks-api.info/3/learning_react_early_release.jpg",
+            "isbn": "9781491954621"
+          },
+          {
+            "ID": 3992631098,
+            "Title": "React: Up & Running",
+            "SubTitle": "Building Web Applications",
+            "Description":
+              "React is a new, open-source technology from Facebook that has stirred quite a storm in the web development community, and some would say it's the next best thing to a silver bullet for building web applications. With React: Up and Running you'll lear ...",
+            "Image": "http://s.it-ebooks-api.info/3/react_up__running_early_release.jpg",
+            "isbn": "9781491931820"
+          },
+          {
+            "ID": 2551581207,
+            "Title": "Jasmine JavaScript Testing, 2nd Edition",
+            "SubTitle": "Test your JavaScript applications efficiently using Jasmine and React.js",
+            "Description":
+              "Take your testing of JavaScript applications to a new level of efficiency and reliability with the help of this book. Starting with the fundamentals of Jasmine and behavior-driven development (BDD), you will learn about tooling and automation. You wi ...",
+            "Image": "http://s.it-ebooks-api.info/14/jasmine_javascript_testing_2nd_edition.jpg",
+            "isbn": "9781785282041"
+          },
+          {
+            "ID": 2721884436,
+            "Title": "Learning React Native",
+            "SubTitle": "Building Native Mobile Apps with JavaScript",
+            "Description":
+              "By bringing the advantages of ReactJS to mobile, React Native transforms every web developer into a potential mobile developer. Unlike existing JavaScript-for-mobile approaches, React Native actually renders natively, giving you the speed, look, and ...",
+            "Image": "http://s.it-ebooks-api.info/3/learning_react_native_early_release.jpg",
+            "isbn": "9781491929001"
+          },
+          {
+            "ID": 3221497149,
+            "Title": "Introduction to React",
+            "Description":
+              "Introduction to React teaches you React, the JavaScript framework created by developers at Facebook, to solve the problem of building complex user interfaces in a consistent and maintainable way. React.js shrugs away common front-end conventions in a ...",
+            "Image": "http://s.it-ebooks-api.info/6/introduction_to_react.jpg",
+            "isbn": "9781484212462"
+          },
+          {
+            "ID": 505569666,
+            "Title": "Learning React Native",
+            "SubTitle": "Building Native Mobile Apps with JavaScript",
+            "Description":
+              "Get a practical introduction to React Native, the JavaScript framework for writing and deploying fully featured mobile apps that look and feel native. With this hands-on guide, you'll learn how to build applications that target iOS, Android, and othe ...",
+            "Image": "http://s.it-ebooks-api.info/3/learning_react_native.jpg",
+            "isbn": "9781491929001"
+          }
+        ]
+      }
+    },
+    {
+      "query": "angular",
+      "body": {
+        "Error": "0",
+        "Time": 0.0662,
+        "Total": "9",
+        "Page": 1,
+        "Books": [
+          {
+            "ID": 4122728448,
+            "Title": "Getting MEAN with Mongo, Express, Angular, and Node",
+            "Description":
+              "Traditional web dev stacks use a different programming language in every layer, resulting in a complex mashup of code and frameworks. Together, the MongoDB database, the Express and AngularJS frameworks, and Node.js constitute the MEAN stacku2014a powe ...",
+            "Image": "http://s.it-ebooks-api.info/5/getting_mean_with_mongo_express_angular_and_node.jpg",
+            "isbn": "9781617292033"
+          },
+          {
+            "ID": 3202804470,
+            "Title": "Pro TypeScript",
+            "SubTitle": "Application-Scale JavaScript Development",
+            "Description":
+              "JavaScript is everywhere, both as a pure language and in popular libraries like Angular, jQuery and Knockout, but users of modern object-oriented languages like Java and C# often find JavaScript frustrating to use and hard to extend to large-scale ap ...",
+            "Image": "http://s.it-ebooks-api.info/6/pro_typescript.jpg",
+            "isbn": "9781430267911"
+          },
+          {
+            "ID": 3625738736,
+            "Title": "AngularJS: Novice to Ninja",
+            "SubTitle": "Elegant, Powerful, Testable, Extendable",
+            "Description":
+              "AngularJS: Novice to Ninja is the perfect book to journey into the world of AngularJS, the superheroic JavaScript framework. Developed and maintained by Google, AngularJS brings the Model-View-Controller (MVC) pattern to JavaScript applications and p ...",
+            "Image": "http://s.it-ebooks-api.info/7/angularjs_novice_to_ninja.jpg",
+            "isbn": "9780992279455"
+          },
+          {
+            "ID": 1957971290,
+            "Title": "AngularJS by Example",
+            "SubTitle":
+              "Learn AngularJS, and tackle the challenges of modern web development by creating your own applications with these practical examples you can use and adapt",
+            "Description":
+              "AngularJS makes web JavaScript web development less painful and more organized u2013 it's unsurprising that today it's one of the most popular tools in web development.nnAngularJS by Example helps you get started with this essential web development f ...",
+            "Image": "http://s.it-ebooks-api.info/14/angularjs_by_example.jpg",
+            "isbn": "9781783553815"
+          },
+          {
+            "ID": 2152247293,
+            "Title": "AngularJS Directives Cookbook",
+            "SubTitle":
+              "Extend the capabilities of AngularJS and build dynamic web applications by creating customized directives with this selection of more than 30 recipes",
+            "Description":
+              "AngularJS directives are at the center of what makes it such an exciting u2013 and important - web development framework. With directives, you can take greater control over HTML elements on your web pages u2013 they u2018direct' Angular's HTML compiler to ...",
+            "Image": "http://s.it-ebooks-api.info/14/angularjs_directives_cookbook.jpg",
+            "isbn": "9781784395896"
+          },
+          {
+            "ID": 3960039562,
+            "Title": "Mastering MeteorJS Application Development",
+            "SubTitle":
+              "MeteorJS makes full-stack JavaScript Application Development simple u2013 Learn how to build better modern web apps with MeteorJS, and become an expert in the innovative JavaScript framework",
+            "Description":
+              "The web is dead u2013 applications now rule our online experiences. But how are you going to build them? Well, if you've been paying attention, you might already have tried your hand with MeteorJS, the JavaScript framework that helps you build complete ...",
+            "Image": "http://s.it-ebooks-api.info/14/mastering_meteorjs_application_development.jpg",
+            "isbn": "9781785282379"
+          },
+          {
+            "ID": 217336290,
+            "Title": "Rails, Angular, Postgres, and Bootstrap",
+            "SubTitle": "Powerful, Effective, and Efficient Full-Stack Web Development",
+            "Description":
+              "As a Rails developer, you care about user experience and performance, but you also want simple and maintainable code. Achieve all that by embracing the full stack of web development, from styling with Bootstrap, building an interactive user interface ...",
+            "Image": "http://s.it-ebooks-api.info/1/rails_angular_postgres_and_bootstrap.jpg",
+            "isbn": "9781680501261"
+          },
+          {
+            "ID": 4238085813,
+            "Title": "AngularJS in Action",
+            "Description":
+              "AngularJS is a JavaScript-based framework that extends HTML, so you can create dynamic, interactive web applications in the same way you create standard static pages. Out of the box, Angular provides most of the functionality you'll need for basic ap ...",
+            "Image": "http://s.it-ebooks-api.info/5/angularjs_in_action.jpg",
+            "isbn": "9781617291333"
+          },
+          {
+            "ID": 1916744333,
+            "Title": "Material Design implementation with AngularJS",
+            "SubTitle": "UI Component Framework",
+            "Description":
+              "Building web and mobile apps that are interactive, fluid and provide consistent experience across devices ranging from desktops, tablets and smart phones is challenging. User Interface (UI) elements need to adapt to various screen sizes and yet the c ...",
+            "Image": "http://s.it-ebooks-api.info/6/material_design_implementation_with_angularjs.jpg",
+            "isbn": "9781484221891"
+          }
+        ]
+      }
+    },
+    {
+      "query": "backbone",
+      "body": {
+        "Error": "0",
+        "Time": 0.0646,
+        "Total": "23",
+        "Page": 1,
+        "Books": [
+          {
+            "ID": 3748417925,
+            "Title": "Backbone.js Testing",
+            "SubTitle":
+              "Plan, architect, and develop tests for Backbone.js applications using modern testing principles and practices",
+            "Description":
+              "Frontend web applications are soaring in popularity and the Backbone.js library is leading this charge with a modular, lightweight approach for organizing JavaScript web applications. At the same time, testing client-side JavaScript and Backbone.js p ...",
+            "Image": "http://s.it-ebooks-api.info/14/backbone.js_testing.jpg",
+            "isbn": "9781782165248"
+          },
+          {
+            "ID": 846207196,
+            "Title": "Backbone.js Blueprints",
+            "SubTitle": "Understand Backbone.js pragmatically by building seven different applications from scratch",
+            "Description":
+              "Backbone.js is an open source, JavaScript library that helps you to build sophisticated and structured web apps. It's important to have well-organized frontend code for easy maintenance and extendability. With the Backbone framework, you'll be able t ...",
+            "Image": "http://s.it-ebooks-api.info/14/backbone.js_blueprints.jpg",
+            "isbn": "9781783286997"
+          },
+          {
+            "ID": 3205429280,
+            "Title": "Backbone.js Essentials",
+            "SubTitle": "Build amazing high-performance web applications using Backbone.js",
+            "Description":
+              "This book offers insight into creating and maintaining dynamic Backbone.js web applications. It delves into the the fundamentals of Backbone.js and helps you achieve mastery of the Backbone library.nnStarting with Models and Collections, you'll lea ...",
+            "Image": "http://s.it-ebooks-api.info/14/backbone.js_essentials.jpg",
+            "isbn": "9781784394790"
+          },
+          {
+            "ID": 148888839,
+            "Title": "Mastering Backbone.js",
+            "SubTitle": "Design and build scalable web applications using Backbone.js",
+            "Description":
+              "Backbone.js is a popular library to build single page applications used by many start-ups around the world because of its flexibility, robustness and simplicity. It allows you to bring your own tools and libraries to make amazing webapps with your ow ...",
+            "Image": "http://s.it-ebooks-api.info/14/mastering_backbone.js.jpg",
+            "isbn": "9781783288496"
+          },
+          {
+            "ID": 2994755406,
+            "Title": "Developing Backbone.js Applications, Early Release",
+            "SubTitle": "Building Better JavaScript Applications",
+            "Description":
+              "Get a complete run-down of the popular Backbone.js framework for structuring JavaScript applications. This practical guide takes you through Model-view-controller (MVC) theory, and shows you how to build applications using Backbone's models, views, c ...",
+            "Image": "http://s.it-ebooks-api.info/3/developing_backbone.js_applications_er.jpg",
+            "isbn": "9781449328252"
+          },
+          {
+            "ID": 3238945693,
+            "Title": "Building Node Applications with MongoDB and Backbone",
+            "SubTitle": "Rapid Prototyping and Scalable Deployment",
+            "Description":
+              "Build an application from backend to browser with Node.js, and kick open the doors to real-time event programming. With this hands-on book, you'll learn how to create a social network application similar to LinkedIn and Facebook, but with a real-time ...",
+            "Image": "http://s.it-ebooks-api.info/3/building_node_applications_with_mongodb_and_backbone.jpg",
+            "isbn": "9781449337391"
+          },
+          {
+            "ID": 285216600,
+            "Title": "Developing Backbone.js Applications",
+            "SubTitle": "Building Better JavaScript Applications",
+            "Description":
+              "If you want to build your site's frontend with the single-page application (SPA) model, this hands-on book shows you how to get the job done with Backbone.js. You'll learn how to create structured JavaScript applications, using Backbone's own flavor ...",
+            "Image": "http://s.it-ebooks-api.info/3/developing_backbone.js_applications.jpg",
+            "isbn": "9781449328252"
+          },
+          {
+            "ID": 515927009,
+            "Title": "Beginning Backbone.js",
+            "Description":
+              "Beginning Backbone.js is your step-by-step guide to learning and using the Backbone.js library in your web projects. Backbone.js is one of the most popular JavaScript libraries among web developers, used to create modular, single-page web apps. This ...",
+            "Image": "http://s.it-ebooks-api.info/6/beginning_backbone.js.jpg",
+            "isbn": "9781430263340"
+          },
+          {
+            "ID": 4166068935,
+            "Title": "Full Stack Web Development with Backbone.js",
+            "SubTitle": "Scalable Application Design with 100% JavaScript",
+            "Description":
+              "Learn how to build a full-stack application with Backbone.js by taking advantage of JavaScript modules, workflow automation, and Backbone's interface building blocks. With this practical guide, author Patrick Mulder takes experienced backend develope ...",
+            "Image": "http://s.it-ebooks-api.info/3/full_stack_web_development_with_backbone.js.jpg",
+            "isbn": "9781449370985"
+          },
+          {
+            "ID": 3288861369,
+            "Title": "Lightweight Django",
+            "SubTitle": "Using REST, WebSockets, and Backbone",
+            "Description":
+              "How can you take advantage of the Django framework to integrate complex client-side interactions and real-time features into your web applications? Through a series of rapid application development projects, this hands-on book shows experienced Djang ...",
+            "Image": "http://s.it-ebooks-api.info/3/lightweight_django.jpg",
+            "isbn": "9781491945940"
+          }
+        ]
+      }
+    },
+    {
+      "query": "node",
+      "body": {
+        "Error": "0",
+        "Time": 0.0662,
+        "Total": "86",
+        "Page": 1,
+        "Books": [
+          {
+            "ID": 1167030458,
+            "Title": "Node.js for PHP Developers",
+            "SubTitle": "Porting PHP to Node.js",
+            "Description":
+              "If you're an experienced PHP developer, you already have a head start on learning how to write Node.js code. In this book, author Daniel Howard demonstrates the remarkable similarities between the two languages, and shows you how to port your entire ...",
+            "Image": "http://s.it-ebooks-api.info/3/node.js_for_php_developers.jpg",
+            "isbn": "9781449333607"
+          },
+          {
+            "ID": 2142819142,
+            "Title": "Node.js Design Patterns",
+            "SubTitle":
+              "Get the best out of Node.js by mastering a series of patterns and techniques to create modular, scalable, and efficient applications",
+            "Description":
+              "Node.js is a massively popular software platform that lets you use JavaScript to easily create scalable server-side applications. It allows you to create efficient code, enabling a more sustainable way of writing software made of only one language ac ...",
+            "Image": "http://s.it-ebooks-api.info/14/node.js_design_patterns.jpg",
+            "isbn": "9781783287314"
+          },
+          {
+            "ID": 3289186304,
+            "Title": "Node.js By Example",
+            "SubTitle": "Learn to use Node.js by creating a fully functional social network",
+            "Description":
+              "Node.js is a JavaScript - driven technology, which means that developers can use the same language to write backend code. Its growing community and the large amount of available modules make Node.js one of the most attractive development environments ...",
+            "Image": "http://s.it-ebooks-api.info/14/node.js_by_example.jpg",
+            "isbn": "9781784395711"
+          },
+          {
+            "ID": 1645280050,
+            "Title": "Node Cookbook",
+            "SubTitle": "Over 50 recipes to master the art of asynchronous server-side JavaScript using Node",
+            "Description":
+              "A hands on approach to learning Node to equip and guide you in the art of asynchronous server side JavaScript.nnPacked with practical recipes taking you from the basics to extending Node with your own modules. Create your own web server to see Node ...",
+            "Image": "http://s.it-ebooks-api.info/14/node_cookbook.jpg",
+            "isbn": "9781849517188"
+          },
+          {
+            "ID": 3286015299,
+            "Title": "Using Node.js for UI Testing",
+            "SubTitle": "Learn how to easily automate testing of your web apps using Node.js, Zombie.js, and Mocha",
+            "Description":
+              "Automating tests for your user interfaces has always been the holy grail of programming. Now, using Zombie.js and Mocha you can create and quickly run your tests, allowing you to test even small changes. Increase your confidence in the code and minim ...",
+            "Image": "http://s.it-ebooks-api.info/14/using_node.js_for_ui_testing.jpg",
+            "isbn": "9781782160526"
+          },
+          {
+            "ID": 4092468351,
+            "Title": "Node.js Recipes",
+            "SubTitle": "A Problem-Solution Approach",
+            "Description":
+              "Node.js Recipes is your one-stop reference for solving Node.js problems. Filled with useful recipes that follow a problem/solution format, you can look up recipes for many situations that you may come across in your day-to-day server-side development ...",
+            "Image": "http://s.it-ebooks-api.info/6/node.js_recipes.jpg",
+            "isbn": "9781430260585"
+          },
+          {
+            "ID": 2156221070,
+            "Title": "Node Cookbook, 2nd Edition",
+            "SubTitle":
+              "Over 50 recipes to master the art of asynchronous server-side JavaScript using Node.js, with coverage of Express 4 and Socket.IO frameworks and the new Streams API",
+            "Description":
+              "Node Cookbook Second Edition shows you how to transfer your JavaScript skills to server-side programming. It will talk you through the various server-side scenarios, often saving you time and effort by demonstrating best practices and showing you how ...",
+            "Image": "http://s.it-ebooks-api.info/14/node_cookbook_2nd_edition.jpg",
+            "isbn": "9781783280438"
+          },
+          {
+            "ID": 2371353191,
+            "Title": "Node.js the Right Way",
+            "SubTitle": "Practical, Server-Side JavaScript That Scales",
+            "Description":
+              "Get to the forefront of server-side JavaScript programming by writing compact, robust, fast, networked Node applications that scale. Ready to take JavaScript beyond the browser, explore dynamic languages features and embrace evented programming? Expl ...",
+            "Image": "http://s.it-ebooks-api.info/1/node.js_the_right_way.jpg",
+            "isbn": "9781937785734"
+          },
+          {
+            "ID": 90507564,
+            "Title": "Node.js in Action",
+            "Description":
+              "JavaScript on the server? You bet. Node.js is a JavaScript server capable of supporting scalable, high-performance web applications. Using asynchronous I/O, the server can do more than one thing at a time, a key requirement for real-time apps like ch ...",
+            "Image": "http://s.it-ebooks-api.info/5/node.js_in_action.jpg",
+            "isbn": "9781617290572"
+          },
+          {
+            "ID": 164760705,
+            "Title": "RESTful Web API Design with Node.js",
+            "SubTitle": "Design and implement comprehensive RESTful solutions in Node.js",
+            "Description":
+              "In this era of cloud computing, every data provisioning solution is built in a scalable and fail-safe way. Thus, when building RESTful services, the right choice of the underlying platform is vital. Node.js, with its asynchronous, event-driven archit ...",
+            "Image": "http://s.it-ebooks-api.info/14/restful_web_api_design_with_node.js.jpg",
+            "isbn": "9781783985869"
+          }
+        ]
+      }
+    }
+  ]
+}
