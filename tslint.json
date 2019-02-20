@@ -1,14 +1,12 @@
 {
-  "defaultSeverity": "error",
   "extends": ["tslint:recommended"],
-  "jsRules": {},
   "rules": {
     "ordered-imports": false,
-    "quotemark": [true, "single", "jsx-single", "avoid-escape"],
+    "quotemark": [true, "single"],
     "object-literal-sort-keys": false,
     "trailing-comma": false,
-    "max-classes-per-file": false,
-    "arrow-parens": false
-  },
-  "rulesDirectory": []
+    "arrow-parens": false,
+    "only-arrow-functions": false,
+    "no-console": false
+  }
 }

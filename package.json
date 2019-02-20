@@ -1,29 +1,34 @@
 {
-  "name": "async-utility",
+  "name": "async-samples",
   "version": "1.0.0",
-  "description": "async codelab",
-  "main": "index.js",
+  "description": "async samples",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mrdulin/async-utility.git"
+    "url": "git+https://github.com/mrdulin/async-samples.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mrdulin/async-utility/issues"
+    "url": "https://github.com/mrdulin/async-samples/issues"
   },
-  "homepage": "https://github.com/mrdulin/async-utility#readme",
+  "homepage": "https://github.com/mrdulin/async-samples#readme",
   "dependencies": {
-    "async": "^2.6.1"
+    "async": "^2.6.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   },
   "devDependencies": {
-    "@types/async": "^2.0.49",
-    "ts-node": "^7.0.0",
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.1"
+    "@types/async": "^2.4.1",
+    "@types/node": "^11.9.4",
+    "@types/request": "^2.48.1",
+    "@types/request-promise": "^4.1.42",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3"
   }
 }
