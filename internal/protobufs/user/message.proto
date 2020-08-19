@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package user;
+
+option go_package = "github.com/mrdulin/grpc-go-cnode/internal/protobufs/user";
+
+message User {
+  string loginname = 1;
+  string avatar_url = 2;
+  string githubUsername = 3;
+  string create_at = 4;
+  int32 score = 5;
+  // repeated TopicBase recent_topics = 6;
+}

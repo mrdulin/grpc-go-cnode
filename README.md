@@ -1,3 +1,7 @@
-# async-codelab
+# grpc-go-cnode
 
-Learning [async](https://github.com/caolan/async) utilities by examples
+compiling protocol buffers:
+
+```bash
+protoc --go_out=. --go_opt=paths=source_relative ./internal/protobufs/user/*.proto
+```

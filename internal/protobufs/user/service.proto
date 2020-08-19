@@ -1,0 +1,16 @@
+syntax="proto3";
+
+package user;
+
+option go_package = "github.com/mrdulin/grpc-go-cnode/internal/protobufs/user";
+
+import "internal/protobufs/user/message.proto";
+
+service UserService {
+  rpc GetUserByLoginname(GetUserByLoginnameRequest) returns (User);
+}
+
+message GetUserByLoginnameRequest {
+  string loginname = 1;
+}
+
