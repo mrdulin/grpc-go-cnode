@@ -1,0 +1,19 @@
+syntax="proto3";
+
+package topic;
+
+option go_package = "github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic";
+
+import "internal/protobufs/topic/domain.proto";
+
+service TopicService {
+  rpc GetTopicById(GetTopicByIdRequest) returns (TopicDetail);
+}
+
+message GetTopicByIdRequest {
+  string id = 1;
+  string accesstoken = 2;
+  string mdrender = 3;
+}
+
+

@@ -1,0 +1,18 @@
+syntax="proto3";
+
+package reply;
+
+option go_package="github.com/mrdulin/grpc-go-cnode/internal/protobufs/reply";
+
+import "google/protobuf/timestamp.proto";
+import "internal/protobufs/shared/user.proto";
+
+message Reply {
+  string id = 1;
+  string content = 2;
+  google.protobuf.Timestamp create_at = 3;
+  string reply_id = 4;
+  shared.UserBase author = 5;
+  bool is_uped = 6;
+  repeated string ups = 7;
+}

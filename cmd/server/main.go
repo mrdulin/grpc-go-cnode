@@ -5,6 +5,8 @@ import (
 	"log"
 	"net"
 
+	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic"
+
 	"github.com/mrdulin/grpc-go-cnode/internal/utils/http"
 
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
@@ -24,6 +26,8 @@ func main() {
 	grpcServer := grpc.NewServer()
 	httpClient := http.NewClient()
 	userServiceImpl := user.NewUserServiceImpl(httpClient, baseurl)
+	topicServiceImpl := topic.NewTopicServiceImpl(httpClient, baseurl)
 	user.RegisterUserServiceServer(grpcServer, userServiceImpl)
+	topic.RegisterTopicServiceServer(grpcServer, topicServiceImpl)
 	log.Fatal(grpcServer.Serve(lis))
 }

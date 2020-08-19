@@ -1,0 +1,33 @@
+syntax="proto3";
+
+package topic;
+
+option go_package="github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic";
+
+import "internal/protobufs/shared/user.proto";
+import "internal/protobufs/reply/domain.proto";
+
+enum Tab {
+  share = 0;
+  ask = 1;
+  good = 2;
+  job = 3;
+}
+
+
+message TopicDetail {
+  string id = 1;
+  string author_id = 2;
+  Tab tab = 3;
+  string title = 4;
+  string content = 5;
+  shared.UserBase author = 6;
+  bool good = 7;
+  bool top = 8;
+  int32 reply_count = 9;
+  int32 visit_count = 10;
+  string create_at = 11;
+  string last_reply_at = 12;
+  repeated reply.Reply replies = 13;
+  bool is_collect = 14;
+}

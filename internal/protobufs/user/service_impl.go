@@ -9,8 +9,14 @@ import (
 )
 
 var (
-	ErrGetUserByLoginname  = errors.New("get user by login name")
-	ErrValidateAccessToken = errors.New("Validate accessToken")
+	ErrGetUserByLoginname  = errors.New("userServiceImpl: Get user by login name")
+	ErrValidateAccessToken = errors.New("userServiceImpl: Validate accessToken")
+)
+
+type (
+	validateAccessTokenRequestPayload struct {
+		AccessToken string `json:"accesstoken"`
+	}
 )
 
 type userServiceImpl struct {
@@ -23,13 +29,23 @@ func NewUserServiceImpl(httpClient http.Client, baseurl string) *userServiceImpl
 	return &userServiceImpl{HttpClient: httpClient, BaseURL: baseurl}
 }
 
-func (svc *userServiceImpl) GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest) (*User, error) {
+func (svc *userServiceImpl) GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest) (*UserDetail, error) {
 	endpoint := svc.BaseURL + "/user/" + in.Loginname
-	var res User
+	var res UserDetail
 	err := svc.HttpClient.Get(endpoint, &res)
 	if err != nil {
 		fmt.Println(err)
 		return nil, ErrGetUserByLoginname
+	}
+	return &res, nil
+}
+func (svc *userServiceImpl) ValidateAccessToken(ctx context.Context, in *ValidateAccessTokenRequest) (*UserEntity, error) {
+	url := svc.BaseURL + "/accesstoken"
+	var res UserEntity
+	err := svc.HttpClient.Post(url, &validateAccessTokenRequestPayload{AccessToken: in.Accesstoken}, &res)
+	if err != nil {
+		fmt.Println(err)
+		return nil, ErrValidateAccessToken
 	}
 	return &res, nil
 }

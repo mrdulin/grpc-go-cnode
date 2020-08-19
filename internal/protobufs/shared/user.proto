@@ -1,0 +1,10 @@
+syntax="proto3";
+
+package shared;
+
+option go_package="github.com/mrdulin/grpc-go-cnode/internal/protobufs/shared";
+
+message UserBase {
+  string loginname = 1;
+  string avatar_url = 2;
+}

@@ -2,9 +2,16 @@ syntax="proto3";
 
 package user;
 
-option go_package = "github.com/mrdulin/grpc-go-cnode/internal/protobufs/user";
+option go_package="github.com/mrdulin/grpc-go-cnode/internal/protobufs/user";
 
-message User {
+
+message UserEntity {
+  string id = 1;
+  string loginname = 2;
+  string avatar_url = 3;
+}
+
+message UserDetail {
   string loginname = 1;
   string avatar_url = 2;
   string githubUsername = 3;
