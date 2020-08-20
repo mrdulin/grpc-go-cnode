@@ -63,6 +63,16 @@ func TestUserServiceImpl_GetUserByLoginname_Integration(t *testing.T) {
 		}
 	})
 
+	t.Run("should return error if the loginname is empty string", func(t *testing.T) {
+		args := user.GetUserByLoginnameRequest{Loginname: ""}
+
+		res, err := client.GetUserByLoginname(context.Background(), &args)
+		if res != nil {
+			t.Errorf("res should be nil, got: %+v", res)
+		}
+		t.Error(err)
+	})
+
 }
 
 func TestMain(m *testing.M) {

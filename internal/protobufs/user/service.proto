@@ -5,6 +5,7 @@ package user;
 option go_package = "github.com/mrdulin/grpc-go-cnode/internal/protobufs/user";
 
 import "internal/protobufs/user/domain.proto";
+import "validate/validate.proto";
 
 service UserService {
   rpc GetUserByLoginname(GetUserByLoginnameRequest) returns (GetUserByLoginnameResponse);
@@ -12,7 +13,7 @@ service UserService {
 }
 
 message GetUserByLoginnameRequest {
-  string loginname = 1;
+  string loginname = 1 [(validate.rules).string.len = 1];
 }
 message GetUserByLoginnameResponse {
   UserDetail data = 1;

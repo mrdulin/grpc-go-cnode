@@ -3,6 +3,7 @@ module github.com/mrdulin/grpc-go-cnode
 go 1.14
 
 require (
+	github.com/envoyproxy/protoc-gen-validate v0.4.1 // indirect
 	github.com/golang/protobuf v1.4.2
 	github.com/google/go-querystring v1.0.0
 	github.com/pkg/errors v0.9.1
