@@ -27,7 +27,7 @@ func main() {
 
 	topicServiceClient := topic.NewTopicServiceClient(conn)
 	testGetTopicById(topicServiceClient)
-
+	//testGetTopicsByPage(topicServiceClient)
 	//userServiceClient := user.NewUserServiceClient(conn)
 	//testValidateAccessToken(userServiceClient)
 }
@@ -58,4 +58,13 @@ func testGetTopicById(client topic.TopicServiceClient) {
 		log.Fatal(err)
 	}
 	fmt.Printf("GetTopicById: %+v", res)
+}
+
+func testGetTopicsByPage(client topic.TopicServiceClient) {
+	args := topic.GetTopicsByPageRequest{Page: 1, Limit: 1, Mdrender: "true"}
+	res, err := client.GetTopicsByPage(context.Background(), &args)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("GetTopicsByPage: %+v", res)
 }

@@ -17,7 +17,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TopicServiceClient interface {
-	GetTopicById(ctx context.Context, in *GetTopicByIdRequest, opts ...grpc.CallOption) (*TopicDetail, error)
+	GetTopicById(ctx context.Context, in *GetTopicByIdRequest, opts ...grpc.CallOption) (*GetTopicByIdResponse, error)
+	GetTopicsByPage(ctx context.Context, in *GetTopicsByPageRequest, opts ...grpc.CallOption) (*GetTopicsByPageResponse, error)
 }
 
 type topicServiceClient struct {
@@ -28,9 +29,18 @@ func NewTopicServiceClient(cc grpc.ClientConnInterface) TopicServiceClient {
 	return &topicServiceClient{cc}
 }
 
-func (c *topicServiceClient) GetTopicById(ctx context.Context, in *GetTopicByIdRequest, opts ...grpc.CallOption) (*TopicDetail, error) {
-	out := new(TopicDetail)
+func (c *topicServiceClient) GetTopicById(ctx context.Context, in *GetTopicByIdRequest, opts ...grpc.CallOption) (*GetTopicByIdResponse, error) {
+	out := new(GetTopicByIdResponse)
 	err := c.cc.Invoke(ctx, "/topic.TopicService/GetTopicById", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *topicServiceClient) GetTopicsByPage(ctx context.Context, in *GetTopicsByPageRequest, opts ...grpc.CallOption) (*GetTopicsByPageResponse, error) {
+	out := new(GetTopicsByPageResponse)
+	err := c.cc.Invoke(ctx, "/topic.TopicService/GetTopicsByPage", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +51,8 @@ func (c *topicServiceClient) GetTopicById(ctx context.Context, in *GetTopicByIdR
 // All implementations must embed UnimplementedTopicServiceServer
 // for forward compatibility
 type TopicServiceServer interface {
-	GetTopicById(context.Context, *GetTopicByIdRequest) (*TopicDetail, error)
+	GetTopicById(context.Context, *GetTopicByIdRequest) (*GetTopicByIdResponse, error)
+	GetTopicsByPage(context.Context, *GetTopicsByPageRequest) (*GetTopicsByPageResponse, error)
 	mustEmbedUnimplementedTopicServiceServer()
 }
 
@@ -49,8 +60,11 @@ type TopicServiceServer interface {
 type UnimplementedTopicServiceServer struct {
 }
 
-func (*UnimplementedTopicServiceServer) GetTopicById(context.Context, *GetTopicByIdRequest) (*TopicDetail, error) {
+func (*UnimplementedTopicServiceServer) GetTopicById(context.Context, *GetTopicByIdRequest) (*GetTopicByIdResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTopicById not implemented")
+}
+func (*UnimplementedTopicServiceServer) GetTopicsByPage(context.Context, *GetTopicsByPageRequest) (*GetTopicsByPageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTopicsByPage not implemented")
 }
 func (*UnimplementedTopicServiceServer) mustEmbedUnimplementedTopicServiceServer() {}
 
@@ -76,6 +90,24 @@ func _TopicService_GetTopicById_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TopicService_GetTopicsByPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTopicsByPageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TopicServiceServer).GetTopicsByPage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/topic.TopicService/GetTopicsByPage",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TopicServiceServer).GetTopicsByPage(ctx, req.(*GetTopicsByPageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _TopicService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "topic.TopicService",
 	HandlerType: (*TopicServiceServer)(nil),
@@ -83,6 +115,10 @@ var _TopicService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetTopicById",
 			Handler:    _TopicService_GetTopicById_Handler,
+		},
+		{
+			MethodName: "GetTopicsByPage",
+			Handler:    _TopicService_GetTopicsByPage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

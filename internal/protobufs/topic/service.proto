@@ -7,13 +7,32 @@ option go_package = "github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic";
 import "internal/protobufs/topic/domain.proto";
 
 service TopicService {
-  rpc GetTopicById(GetTopicByIdRequest) returns (TopicDetail);
+  rpc GetTopicById(GetTopicByIdRequest) returns (GetTopicByIdResponse);
+  rpc GetTopicsByPage(GetTopicsByPageRequest) returns(GetTopicsByPageResponse);
 }
+
 
 message GetTopicByIdRequest {
   string id = 1;
   string accesstoken = 2;
   string mdrender = 3;
+}
+
+message GetTopicByIdResponse {
+  TopicDetail data = 1;
+  bool success = 2;
+}
+
+message GetTopicsByPageRequest {
+  int32 page = 1;
+  int32 limit = 2;
+  Tab tab = 3;
+  string mdrender = 4;
+}
+
+message GetTopicsByPageResponse {
+  repeated Topic data = 1;
+  bool success = 2;
 }
 
 

@@ -14,6 +14,20 @@ enum Tab {
   job = 3;
 }
 
+message Topic {
+  string id = 1;
+  string author_id = 2;
+  Tab tab = 3;
+  string title = 4;
+  string content = 5;
+  shared.UserBase author = 6;
+  bool good = 7;
+  bool top = 8;
+  int32 reply_count = 9;
+  int32 visit_count = 10;
+  string create_at = 11;
+  string last_reply_at = 12;
+}
 
 message TopicDetail {
   string id = 1;
@@ -28,6 +42,7 @@ message TopicDetail {
   int32 visit_count = 10;
   string create_at = 11;
   string last_reply_at = 12;
+  // different fields
   repeated reply.Reply replies = 13;
   bool is_collect = 14;
 }

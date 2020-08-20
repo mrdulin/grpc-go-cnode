@@ -99,27 +99,12 @@ func (h *client) Decode(body io.ReadCloser, res interface{}) error {
 }
 
 func (h *client) Unmarshal(res interface{}, data proto.Message) error {
-	var (
-		bs  []byte
-		err error
-	)
-	switch v := res.(type) {
-	case Response:
-		bs = v.Data
-	case ResponseMap:
-		var r interface{}
-		if v["data"] != nil {
-			r = v["data"]
-		}
-		r = v
-		bs, err = json.Marshal(r)
-		if err != nil {
-			return errors.Wrapf(err, "json.Marshal(r). v: %+v", r)
-		}
+	bs, err := json.Marshal(res)
+	if err != nil {
+		return errors.Wrapf(err, "json.Marshal(r). res: %+v", res)
 	}
 	um := jsonpb.Unmarshaler{}
 	err = um.Unmarshal(strings.NewReader(string(bs)), data)
-	//err = json.Unmarshal(bs, &data)
 	if err != nil {
 		return errors.Wrapf(err, "json.Unmarshal. data: %s", string(bs))
 	}
