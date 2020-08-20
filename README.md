@@ -3,7 +3,9 @@
 A Go gRPC server for [CNode](https://cnodejs.org) community built on the top of RESTful API.
 
 
-After modifying the `.proto` files, need to re-compile protocol buffers:
+After modifying the `.proto` files, need to re-compile protocol buffers.
+It will generate the service interfaces, models for the server side and service interfaces for client side.
+Then, you can implement the interfaces of the services.
 
 ```bash
 make compile-protobuf
