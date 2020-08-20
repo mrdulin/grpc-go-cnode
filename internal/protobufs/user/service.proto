@@ -7,13 +7,23 @@ option go_package = "github.com/mrdulin/grpc-go-cnode/internal/protobufs/user";
 import "internal/protobufs/user/domain.proto";
 
 service UserService {
-  rpc GetUserByLoginname(GetUserByLoginnameRequest) returns (UserDetail);
-  rpc ValidateAccessToken(ValidateAccessTokenRequest) returns (UserEntity);
+  rpc GetUserByLoginname(GetUserByLoginnameRequest) returns (GetUserByLoginnameResponse);
+  rpc ValidateAccessToken(ValidateAccessTokenRequest) returns (ValidateAccessTokenResponse);
 }
 
 message GetUserByLoginnameRequest {
   string loginname = 1;
 }
+message GetUserByLoginnameResponse {
+  UserDetail data = 1;
+  bool success = 2;
+}
 message ValidateAccessTokenRequest {
   string accesstoken = 1;
+}
+message ValidateAccessTokenResponse {
+  string id = 1;
+  string loginname = 2;
+  string avatar_url = 3;
+  bool success = 4;
 }

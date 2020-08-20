@@ -28,18 +28,6 @@ func main() {
 	topicServiceClient := topic.NewTopicServiceClient(conn)
 	testGetTopicById(topicServiceClient)
 	//testGetTopicsByPage(topicServiceClient)
-	//userServiceClient := user.NewUserServiceClient(conn)
-	//testValidateAccessToken(userServiceClient)
-}
-
-func testGetUserByLoginname(client user.UserServiceClient) {
-	args := user.GetUserByLoginnameRequest{Loginname: "mrdulin"}
-
-	res, err := client.GetUserByLoginname(context.Background(), &args)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("GetUserByLoginname: %+v", res)
 }
 
 func testValidateAccessToken(client user.UserServiceClient) {

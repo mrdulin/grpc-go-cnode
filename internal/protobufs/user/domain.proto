@@ -4,6 +4,8 @@ package user;
 
 option go_package="github.com/mrdulin/grpc-go-cnode/internal/protobufs/user";
 
+import "internal/protobufs/shared/topic.proto";
+import "internal/protobufs/reply/domain.proto";
 
 message UserEntity {
   string id = 1;
@@ -17,5 +19,7 @@ message UserDetail {
   string githubUsername = 3;
   string create_at = 4;
   int32 score = 5;
-  // repeated TopicBase recent_topics = 6;
+  repeated shared.TopicBase recent_topics = 6;
+  repeated reply.RecentReply recent_replies = 7;
+
 }

@@ -17,8 +17,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
-	GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest, opts ...grpc.CallOption) (*UserDetail, error)
-	ValidateAccessToken(ctx context.Context, in *ValidateAccessTokenRequest, opts ...grpc.CallOption) (*UserEntity, error)
+	GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest, opts ...grpc.CallOption) (*GetUserByLoginnameResponse, error)
+	ValidateAccessToken(ctx context.Context, in *ValidateAccessTokenRequest, opts ...grpc.CallOption) (*ValidateAccessTokenResponse, error)
 }
 
 type userServiceClient struct {
@@ -29,8 +29,8 @@ func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
 	return &userServiceClient{cc}
 }
 
-func (c *userServiceClient) GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest, opts ...grpc.CallOption) (*UserDetail, error) {
-	out := new(UserDetail)
+func (c *userServiceClient) GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest, opts ...grpc.CallOption) (*GetUserByLoginnameResponse, error) {
+	out := new(GetUserByLoginnameResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/GetUserByLoginname", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -38,8 +38,8 @@ func (c *userServiceClient) GetUserByLoginname(ctx context.Context, in *GetUserB
 	return out, nil
 }
 
-func (c *userServiceClient) ValidateAccessToken(ctx context.Context, in *ValidateAccessTokenRequest, opts ...grpc.CallOption) (*UserEntity, error) {
-	out := new(UserEntity)
+func (c *userServiceClient) ValidateAccessToken(ctx context.Context, in *ValidateAccessTokenRequest, opts ...grpc.CallOption) (*ValidateAccessTokenResponse, error) {
+	out := new(ValidateAccessTokenResponse)
 	err := c.cc.Invoke(ctx, "/user.UserService/ValidateAccessToken", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -51,8 +51,8 @@ func (c *userServiceClient) ValidateAccessToken(ctx context.Context, in *Validat
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility
 type UserServiceServer interface {
-	GetUserByLoginname(context.Context, *GetUserByLoginnameRequest) (*UserDetail, error)
-	ValidateAccessToken(context.Context, *ValidateAccessTokenRequest) (*UserEntity, error)
+	GetUserByLoginname(context.Context, *GetUserByLoginnameRequest) (*GetUserByLoginnameResponse, error)
+	ValidateAccessToken(context.Context, *ValidateAccessTokenRequest) (*ValidateAccessTokenResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -60,10 +60,10 @@ type UserServiceServer interface {
 type UnimplementedUserServiceServer struct {
 }
 
-func (*UnimplementedUserServiceServer) GetUserByLoginname(context.Context, *GetUserByLoginnameRequest) (*UserDetail, error) {
+func (*UnimplementedUserServiceServer) GetUserByLoginname(context.Context, *GetUserByLoginnameRequest) (*GetUserByLoginnameResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserByLoginname not implemented")
 }
-func (*UnimplementedUserServiceServer) ValidateAccessToken(context.Context, *ValidateAccessTokenRequest) (*UserEntity, error) {
+func (*UnimplementedUserServiceServer) ValidateAccessToken(context.Context, *ValidateAccessTokenRequest) (*ValidateAccessTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ValidateAccessToken not implemented")
 }
 func (*UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}

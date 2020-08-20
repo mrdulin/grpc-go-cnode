@@ -16,3 +16,10 @@ message Reply {
   bool is_uped = 6;
   repeated string ups = 7;
 }
+
+message RecentReply {
+  string id = 1;
+  string title = 2;
+  google.protobuf.Timestamp last_reply_at = 3;
+  shared.UserBase author = 4;
+}

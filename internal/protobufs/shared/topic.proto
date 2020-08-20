@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package shared;
+
+option go_package="github.com/mrdulin/grpc-go-cnode/internal/protobufs/shared";
+
+import "internal/protobufs/shared/user.proto";
+
+message TopicBase {
+  string id = 1;
+  UserBase author = 2;
+  string title = 3;
+  string last_reply_at = 4;
+}

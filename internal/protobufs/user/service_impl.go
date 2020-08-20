@@ -29,9 +29,9 @@ func NewUserServiceImpl(httpClient http.Client, baseurl string) *userServiceImpl
 	return &userServiceImpl{HttpClient: httpClient, BaseURL: baseurl}
 }
 
-func (svc *userServiceImpl) GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest) (*UserDetail, error) {
+func (svc *userServiceImpl) GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest) (*GetUserByLoginnameResponse, error) {
 	endpoint := svc.BaseURL + "/user/" + in.Loginname
-	var res UserDetail
+	var res GetUserByLoginnameResponse
 	err := svc.HttpClient.Get(endpoint, &res)
 	if err != nil {
 		fmt.Println(err)
@@ -39,9 +39,9 @@ func (svc *userServiceImpl) GetUserByLoginname(ctx context.Context, in *GetUserB
 	}
 	return &res, nil
 }
-func (svc *userServiceImpl) ValidateAccessToken(ctx context.Context, in *ValidateAccessTokenRequest) (*UserEntity, error) {
+func (svc *userServiceImpl) ValidateAccessToken(ctx context.Context, in *ValidateAccessTokenRequest) (*ValidateAccessTokenResponse, error) {
 	url := svc.BaseURL + "/accesstoken"
-	var res UserEntity
+	var res ValidateAccessTokenResponse
 	err := svc.HttpClient.Post(url, &validateAccessTokenRequestPayload{AccessToken: in.Accesstoken}, &res)
 	if err != nil {
 		fmt.Println(err)

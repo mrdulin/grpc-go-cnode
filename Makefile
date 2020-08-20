@@ -1,4 +1,6 @@
 
+INTEGRATION_TEST_FUNC_NAME_SUFFIX=Integration
+
 compile-protobuf:
 	protoc \
 		--go_out=. \
@@ -9,3 +11,9 @@ compile-protobuf:
 
 start:
 	go run ./cmd/server/main.go
+
+test-integration:
+	go test -run ${INTEGRATION_TEST_FUNC_NAME_SUFFIX} -v ./...
+
+test-unit:
+	go test -v --short ./...
