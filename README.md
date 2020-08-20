@@ -1,7 +1,26 @@
 # grpc-go-cnode
 
-compiling protocol buffers:
+A Go gRPC server for [CNode](https://cnodejs.org) community built on the top of RESTful API.
+
+
+After modifying the `.proto` files, need to re-compile protocol buffers:
 
 ```bash
-protoc --go_out=. --go_opt=paths=source_relative ./internal/protobufs/user/*.proto
+make compile-protobuf
+```
+
+Start the gRPC server:
+```bash
+make start
+```
+
+Run integration testings:
+
+1. Run `make start` to start the server
+2. Run `make test-integration`
+
+Run unit testings:
+
+```bash
+make test-unit
 ```
