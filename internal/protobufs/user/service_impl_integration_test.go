@@ -8,6 +8,10 @@ import (
 	"strings"
 	"testing"
 
+	"google.golang.org/grpc/codes"
+
+	"google.golang.org/grpc/status"
+
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
 
 	"google.golang.org/grpc"
@@ -70,7 +74,14 @@ func TestUserServiceImpl_GetUserByLoginname_Integration(t *testing.T) {
 		if res != nil {
 			t.Errorf("res should be nil, got: %+v", res)
 		}
-		t.Error(err)
+		s, _ := status.FromError(err)
+		if s.Code() != codes.InvalidArgument {
+			t.Errorf("should get invalid argument code")
+		}
+		if s.Message() != "invalid GetUserByLoginnameRequest.Loginname: value length must be at least 1 runes" {
+			t.Errorf("should get invalid argument error message")
+		}
+
 	})
 
 }

@@ -5,6 +5,9 @@ import (
 	"errors"
 	"fmt"
 
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+
 	http "github.com/mrdulin/grpc-go-cnode/internal/utils/http"
 )
 
@@ -30,9 +33,13 @@ func NewUserServiceImpl(httpClient http.Client, baseurl string) *userServiceImpl
 }
 
 func (svc *userServiceImpl) GetUserByLoginname(ctx context.Context, in *GetUserByLoginnameRequest) (*GetUserByLoginnameResponse, error) {
+	err := in.Validate()
+	if err != nil {
+		return nil, status.Error(codes.InvalidArgument, err.Error())
+	}
 	endpoint := svc.BaseURL + "/user/" + in.Loginname
 	var res GetUserByLoginnameResponse
-	err := svc.HttpClient.Get(endpoint, &res)
+	err = svc.HttpClient.Get(endpoint, &res)
 	if err != nil {
 		fmt.Println(err)
 		return nil, ErrGetUserByLoginname

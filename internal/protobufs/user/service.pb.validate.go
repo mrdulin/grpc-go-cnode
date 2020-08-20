@@ -44,12 +44,11 @@ func (m *GetUserByLoginnameRequest) Validate() error {
 		return nil
 	}
 
-	if utf8.RuneCountInString(m.GetLoginname()) != 1 {
+	if utf8.RuneCountInString(m.GetLoginname()) < 1 {
 		return GetUserByLoginnameRequestValidationError{
 			field:  "Loginname",
-			reason: "value length must be 1 runes",
+			reason: "value length must be at least 1 runes",
 		}
-
 	}
 
 	return nil
