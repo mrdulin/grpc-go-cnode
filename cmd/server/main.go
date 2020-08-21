@@ -29,5 +29,6 @@ func main() {
 	topicServiceImpl := topic.NewTopicServiceImpl(httpClient, baseurl)
 	user.RegisterUserServiceServer(grpcServer, userServiceImpl)
 	topic.RegisterTopicServiceServer(grpcServer, topicServiceImpl)
+	log.Printf("gRPC server is listening on port: %s\n", port)
 	log.Fatal(grpcServer.Serve(lis))
 }
