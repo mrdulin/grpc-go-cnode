@@ -197,7 +197,12 @@ func (m *ValidateAccessTokenRequest) Validate() error {
 		return nil
 	}
 
-	// no validation rules for Accesstoken
+	if utf8.RuneCountInString(m.GetAccesstoken()) < 1 {
+		return ValidateAccessTokenRequestValidationError{
+			field:  "Accesstoken",
+			reason: "value length must be at least 1 runes",
+		}
+	}
 
 	return nil
 }

@@ -20,7 +20,7 @@ message GetUserByLoginnameResponse {
   bool success = 2;
 }
 message ValidateAccessTokenRequest {
-  string accesstoken = 1;
+  string accesstoken = 1 [(validate.rules).string.min_len = 1];
 }
 message ValidateAccessTokenResponse {
   string id = 1;

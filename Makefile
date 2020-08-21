@@ -1,4 +1,7 @@
-
+PROJECTNAME := $(shell basename "$(PWD)")
+GOBASE := $(shell pwd)
+GOBIN := $(GOBASE)/bin
+MAIN_FILE=main.go
 INTEGRATION_TEST_FUNC_NAME_SUFFIX=Integration
 GOPATH_FIRST=$(shell echo $$GOPATH | cut -d':' -f1)
 
@@ -21,3 +24,7 @@ test-integration:
 
 test-unit:
 	go test -v --short ./...
+
+build:
+	@echo "  >  Building binary..."
+	go build -o ${GOBIN}/${PROJECTNAME} ${GOBASE}/cmd/server/${MAIN_FILE}
