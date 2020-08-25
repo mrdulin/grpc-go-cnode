@@ -5,6 +5,8 @@ import (
 	"log"
 	"net"
 
+	"google.golang.org/grpc/credentials"
+
 	"github.com/mrdulin/grpc-go-cnode/internal/utils/grpclogger"
 	"google.golang.org/grpc/grpclog"
 
@@ -38,7 +40,14 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
-	grpcServer := grpc.NewServer(grpc.UnaryInterceptor(interceptors.NewUnaryInterceptor(logger)))
+	creds, err := credentials.NewServerTLSFromFile("./assets/server.crt", "./assets/server.key")
+	if err != nil {
+		log.Fatal(err)
+	}
+	grpcServer := grpc.NewServer(
+		grpc.Creds(creds),
+		grpc.UnaryInterceptor(interceptors.NewUnaryInterceptor(logger)),
+	)
 	httpClient := http.NewClient()
 	userServiceImpl := user.NewUserServiceImpl(httpClient, baseurl)
 	topicServiceImpl := topic.NewTopicServiceImpl(httpClient, baseurl)

@@ -16,6 +16,8 @@ Environment variables in `configs/config.yaml`:
 BASE_URL: https://cnodejs.org/api/v1
 PORT: 3000
 ACCESS_TOKEN: <YOUR_ACCESS_TOKEN>
+GRPC_GO_LOG_SEVERITY_LEVEL: info
+GRPC_GO_LOG_VERBOSITY_LEVEL: 1
 ```
 
 Start the gRPC server:

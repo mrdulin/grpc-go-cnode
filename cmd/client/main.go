@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"log"
 
+	"google.golang.org/grpc/credentials"
+
 	"github.com/mrdulin/grpc-go-cnode/configs"
 
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic"
@@ -14,18 +16,25 @@ import (
 )
 
 var (
-	accesstoken string
+	accesstoken   string
+	serverAddress string
 )
 
 func init() {
 	conf := configs.Read()
 	accesstoken = conf.GetString(configs.ACCESS_TOKEN)
+	serverAddress = fmt.Sprintf("localhost:%s", conf.GetString(configs.PORT))
 }
 
 func main() {
-	serverAddress := "localhost:3000"
-
-	conn, e := grpc.Dial(serverAddress, grpc.WithInsecure())
+	creds, err := credentials.NewClientTLSFromFile("./assets/server.crt", "server.grpc.io")
+	if err != nil {
+		log.Fatal(err)
+	}
+	conn, e := grpc.Dial(serverAddress,
+		//grpc.WithInsecure()
+		grpc.WithTransportCredentials(creds),
+	)
 
 	if e != nil {
 		panic(e)
