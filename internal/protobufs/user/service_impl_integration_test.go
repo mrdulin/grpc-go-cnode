@@ -3,33 +3,40 @@ package user_test
 import (
 	"context"
 	"fmt"
-	"log"
 	"os"
 	"strings"
 	"testing"
 
-	"google.golang.org/grpc/codes"
+	"github.com/mrdulin/grpc-go-cnode/configs"
 
-	"google.golang.org/grpc/status"
+	"github.com/mrdulin/grpc-go-cnode/internal/utils/auth"
 
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
-
-	"google.golang.org/grpc"
-
 	"github.com/mrdulin/grpc-go-cnode/internal/utils"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 var (
-	serverAddress = "localhost:3000"
-	client        user.UserServiceClient
-	conn          *grpc.ClientConn
-	err           error
+	serverAddress   = "localhost:3000"
+	client          user.UserServiceClient
+	clientWithCreds user.UserServiceClient
+	conn            *grpc.ClientConn
+	connWithCreds   *grpc.ClientConn
+	err             error
+	accesstoken     string
 )
 
 func setup() {
 	fmt.Println("setup")
+	conf := configs.Read()
+	accesstoken = conf.GetString(configs.ACCESS_TOKEN)
+	creds := auth.Authentication{Authorization: "Bearer 123"}
 	conn, err = grpc.Dial(serverAddress, grpc.WithInsecure())
+	connWithCreds, err = grpc.Dial(serverAddress, grpc.WithInsecure(), grpc.WithPerRPCCredentials(&creds))
 	client = user.NewUserServiceClient(conn)
+	clientWithCreds = user.NewUserServiceClient(connWithCreds)
 	if err != nil {
 		panic(err)
 	}
@@ -48,7 +55,7 @@ func TestUserServiceImpl_GetUserByLoginname_Integration(t *testing.T) {
 
 		res, err := client.GetUserByLoginname(context.Background(), &args)
 		if err != nil {
-			log.Fatal(err)
+			t.Fatal(err)
 		}
 		if res.Data == nil {
 			t.Errorf("expect get user detail, got: %+v", res)
@@ -84,6 +91,42 @@ func TestUserServiceImpl_GetUserByLoginname_Integration(t *testing.T) {
 
 	})
 
+}
+
+func TestUserServiceImpl_ValidateAccessToken_Integration(t *testing.T) {
+	utils.MarkedAsIntegrationTest(t)
+
+	t.Run("should get unauthenticated error for", func(t *testing.T) {
+		args := user.ValidateAccessTokenRequest{Accesstoken: accesstoken}
+
+		res, err := client.ValidateAccessToken(context.Background(), &args)
+		if res != nil {
+			t.Fatalf("expected res is nil, got: %+v", res)
+		}
+		s, _ := status.FromError(err)
+		if s.Code() != codes.Unauthenticated {
+			t.Fatalf("expected unanthenticated error code, got: %+v", s.Code())
+		}
+		if s.Message() != "invalid token" {
+			t.Fatalf("expected got invalid token message, got: %s", s.Message())
+		}
+	})
+
+	t.Run("should validate accesstoken correctly", func(t *testing.T) {
+		args := user.ValidateAccessTokenRequest{Accesstoken: accesstoken}
+		res, err := clientWithCreds.ValidateAccessToken(context.Background(), &args)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if res != nil {
+			if !res.GetSuccess() {
+				t.Fatalf("expected validate accesstoken success")
+			}
+			if res.GetLoginname() != "mrdulin" {
+				t.Fatalf("expected loginname is mrdulin, got: %s", res.GetLoginname())
+			}
+		}
+	})
 }
 
 func TestMain(m *testing.M) {

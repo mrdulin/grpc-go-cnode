@@ -5,15 +5,22 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/mrdulin/grpc-go-cnode/configs"
+
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic"
 
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
 	"google.golang.org/grpc"
 )
 
-const (
-	accesstoken string = "be60f8d0-149c-4905-be4a-7f07d4788d88"
+var (
+	accesstoken string
 )
+
+func init() {
+	conf := configs.Read()
+	accesstoken = conf.GetString(configs.ACCESS_TOKEN)
+}
 
 func main() {
 	serverAddress := "localhost:3000"

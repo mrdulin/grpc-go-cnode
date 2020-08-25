@@ -11,6 +11,13 @@ Then, you can implement the interfaces of the services.
 make compile-protobuf
 ```
 
+Environment variables in `configs/config.yaml`:
+```
+BASE_URL: https://cnodejs.org/api/v1
+PORT: 3000
+ACCESS_TOKEN: <YOUR_ACCESS_TOKEN>
+```
+
 Start the gRPC server:
 ```bash
 make start
@@ -26,3 +33,4 @@ Run unit testings:
 ```bash
 make test-unit
 ```
+

@@ -5,6 +5,8 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/mrdulin/grpc-go-cnode/internal/utils/auth"
+
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
@@ -23,6 +25,7 @@ type (
 )
 
 type userServiceImpl struct {
+	auth       *auth.Authentication
 	HttpClient http.Client
 	BaseURL    string
 	UnimplementedUserServiceServer
@@ -47,6 +50,9 @@ func (svc *userServiceImpl) GetUserByLoginname(ctx context.Context, in *GetUserB
 	return &res, nil
 }
 func (svc *userServiceImpl) ValidateAccessToken(ctx context.Context, in *ValidateAccessTokenRequest) (*ValidateAccessTokenResponse, error) {
+	if err := svc.auth.Auth(ctx); err != nil {
+		return nil, err
+	}
 	err := in.Validate()
 	if err != nil {
 		return nil, status.Error(codes.InvalidArgument, err.Error())

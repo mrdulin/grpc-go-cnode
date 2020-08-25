@@ -5,20 +5,28 @@ import (
 	"log"
 	"net"
 
+	"github.com/mrdulin/grpc-go-cnode/configs"
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic"
-
-	"github.com/mrdulin/grpc-go-cnode/internal/utils/http"
-
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
+	"github.com/mrdulin/grpc-go-cnode/internal/utils/http"
+	"github.com/spf13/viper"
 	"google.golang.org/grpc"
 )
 
-const (
-	port    string = "3000"
-	baseurl string = "https://cnodejs.org/api/v1"
+var (
+	conf *viper.Viper
 )
 
+func init() {
+	conf = configs.Read()
+}
+
 func main() {
+	port := conf.GetString(configs.PORT)
+	baseurl := conf.GetString(configs.BASE_URL)
+	if baseurl == "" {
+		log.Fatal("missing api url")
+	}
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%s", port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
