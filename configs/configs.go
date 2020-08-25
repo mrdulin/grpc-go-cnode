@@ -9,9 +9,11 @@ import (
 )
 
 const (
-	PORT         string = "PORT"
-	BASE_URL     string = "BASE_URL"
-	ACCESS_TOKEN string = "ACCESS_TOKEN"
+	PORT                        string = "PORT"
+	BASE_URL                    string = "BASE_URL"
+	ACCESS_TOKEN                string = "ACCESS_TOKEN"
+	GRPC_GO_LOG_SEVERITY_LEVEL  string = "GRPC_GO_LOG_SEVERITY_LEVEL"
+	GRPC_GO_LOG_VERBOSITY_LEVEL string = "GRPC_GO_LOG_VERBOSITY_LEVEL"
 )
 
 func Read() *viper.Viper {

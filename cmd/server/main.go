@@ -5,6 +5,11 @@ import (
 	"log"
 	"net"
 
+	"github.com/mrdulin/grpc-go-cnode/internal/utils/grpclogger"
+	"google.golang.org/grpc/grpclog"
+
+	"github.com/mrdulin/grpc-go-cnode/internal/utils/interceptors"
+
 	"github.com/mrdulin/grpc-go-cnode/configs"
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic"
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
@@ -14,11 +19,13 @@ import (
 )
 
 var (
-	conf *viper.Viper
+	conf   *viper.Viper
+	logger grpclog.LoggerV2
 )
 
 func init() {
 	conf = configs.Read()
+	logger = grpclogger.New(conf.GetString(configs.GRPC_GO_LOG_SEVERITY_LEVEL), conf.GetString(configs.GRPC_GO_LOG_VERBOSITY_LEVEL))
 }
 
 func main() {
@@ -31,7 +38,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
-	grpcServer := grpc.NewServer()
+	grpcServer := grpc.NewServer(grpc.UnaryInterceptor(interceptors.NewUnaryInterceptor(logger)))
 	httpClient := http.NewClient()
 	userServiceImpl := user.NewUserServiceImpl(httpClient, baseurl)
 	topicServiceImpl := topic.NewTopicServiceImpl(httpClient, baseurl)
