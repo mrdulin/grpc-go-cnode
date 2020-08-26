@@ -10,5 +10,5 @@ openssl req -new -x509 -days 3650 \
 openssl genrsa -out ./assets/client.key 2048
 
 openssl req -new -x509 -days 3650 \
-  -subj "/C=GB/L=China/O=grpo-server/CN=client.grpc.io" \
+  -subj "/C=GB/L=China/O=grpo-client/CN=client.grpc.io" \
   -key ./assets/client.key -out ./assets/client.crt

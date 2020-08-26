@@ -36,3 +36,4 @@ Run unit testings:
 make test-unit
 ```
 
+More info, see [Makefile](./Makefile)

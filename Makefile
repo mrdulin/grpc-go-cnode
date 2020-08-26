@@ -5,6 +5,10 @@ MAIN_FILE=main.go
 INTEGRATION_TEST_FUNC_NAME_SUFFIX=Integration
 GOPATH_FIRST=$(shell echo $$GOPATH | cut -d':' -f1)
 
+crt-gen:
+	chmod +x ${GOBASE}/scripts/crt_key_gen.sh
+	${GOBASE}/scripts/crt_key_gen.sh
+
 compile-protobuf:
 	protoc \
 		-I . \

@@ -3,18 +3,19 @@ package user_test
 import (
 	"context"
 	"fmt"
+	"log"
 	"os"
+	"path"
 	"strings"
 	"testing"
 
 	"github.com/mrdulin/grpc-go-cnode/configs"
-
-	"github.com/mrdulin/grpc-go-cnode/internal/utils/auth"
-
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
 	"github.com/mrdulin/grpc-go-cnode/internal/utils"
+	"github.com/mrdulin/grpc-go-cnode/internal/utils/auth"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/status"
 )
 
@@ -24,7 +25,6 @@ var (
 	clientWithCreds user.UserServiceClient
 	conn            *grpc.ClientConn
 	connWithCreds   *grpc.ClientConn
-	err             error
 	accesstoken     string
 )
 
@@ -32,9 +32,19 @@ func setup() {
 	fmt.Println("setup")
 	conf := configs.Read()
 	accesstoken = conf.GetString(configs.ACCESS_TOKEN)
-	creds := auth.Authentication{Authorization: "Bearer 123"}
-	conn, err = grpc.Dial(serverAddress, grpc.WithInsecure())
-	connWithCreds, err = grpc.Dial(serverAddress, grpc.WithInsecure(), grpc.WithPerRPCCredentials(&creds))
+	perRPCCreds := auth.Authentication{Authorization: "Bearer 123"}
+	dir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	certFile := path.Join(dir, "../../../assets/server.crt")
+	creds, err := credentials.NewClientTLSFromFile(certFile, "server.grpc.io")
+	if err != nil {
+		log.Fatal(err)
+	}
+	transportCredentials := grpc.WithTransportCredentials(creds)
+	conn, err = grpc.Dial(serverAddress, transportCredentials)
+	connWithCreds, err = grpc.Dial(serverAddress, transportCredentials, grpc.WithPerRPCCredentials(&perRPCCreds))
 	client = user.NewUserServiceClient(conn)
 	clientWithCreds = user.NewUserServiceClient(connWithCreds)
 	if err != nil {
@@ -45,6 +55,7 @@ func setup() {
 func tearDown() {
 	fmt.Println("tearDown")
 	conn.Close()
+	connWithCreds.Close()
 }
 
 func TestUserServiceImpl_GetUserByLoginname_Integration(t *testing.T) {
