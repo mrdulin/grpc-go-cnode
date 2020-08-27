@@ -11,9 +11,9 @@ Then, you can implement the interfaces of the services.
 
 Features:
 
-* HTTP server and gRPC server share same listening address and port.
+* HTTPs server and gRPC server share same listening address and port.
 * Print access logs in unary call interceptor
-* gRPC Health check for all services
+* gRPC Health check for all services based on [GRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
 * Per RPC call authentication, check [auth.go](./internal/utils/auth/auth.go)
 * TLS connection with self-signed credentials
 * Support constraint rules and validators for Protocol buffer, check [here](./internal/protobufs/user/service.proto)
@@ -33,7 +33,7 @@ GRPC_GO_LOG_SEVERITY_LEVEL: info
 GRPC_GO_LOG_VERBOSITY_LEVEL: 1
 ```
 
-Start the gRPC server:
+Start the HTTPs server and gRPC server:
 ```bash
 make start
 ```
