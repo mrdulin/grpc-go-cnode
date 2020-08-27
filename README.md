@@ -1,9 +1,11 @@
 # grpc-go-cnode
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/mrdulin/grpc-go-cnode)](https://goreportcard.com/report/github.com/mrdulin/grpc-go-cnode)
+![GitHub](https://img.shields.io/github/license/mrdulin/grpc-go-cnode)
 
 A Go gRPC server for [CNode](https://cnodejs.org) community built on the top of RESTful API.
 
+*This project just for teaching, DON'T use in production.*
 
 After modifying the `.proto` files, need to re-compile protocol buffers.
 It will generate the service interfaces, models for the server side and service interfaces for client side.
@@ -24,8 +26,8 @@ Compile protocol buffers:
 make compile-protobuf
 ```
 
-Environment variables in `configs/config.yaml`:
-```
+Don't support read environment variables from OS. Only support read environment variables from `configs/config.yaml`:
+```yaml
 BASE_URL: https://cnodejs.org/api/v1
 PORT: 3000
 ACCESS_TOKEN: <YOUR_ACCESS_TOKEN>

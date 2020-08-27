@@ -17,6 +17,7 @@ const (
 )
 
 func Read() *viper.Viper {
+
 	fmt.Println("load env vars from local config.yaml file")
 	_, b, _, _ := runtime.Caller(0)
 	basePath := filepath.Dir(b)
