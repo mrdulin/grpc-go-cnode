@@ -27,7 +27,7 @@ func init() {
 }
 
 func main() {
-	creds, err := credentials.NewClientTLSFromFile("./assets/server.crt", "server.grpc.io")
+	creds, err := credentials.NewClientTLSFromFile("./assets/server.crt", "localhost")
 	if err != nil {
 		log.Fatal(err)
 	}

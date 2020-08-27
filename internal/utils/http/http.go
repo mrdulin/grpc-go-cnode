@@ -8,10 +8,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/golang/protobuf/proto"
-
 	"github.com/golang/protobuf/jsonpb"
-
+	"github.com/golang/protobuf/proto"
 	"github.com/pkg/errors"
 )
 
@@ -31,18 +29,25 @@ type Response struct {
 
 type ResponseMap map[string]interface{}
 
+type Decoder interface {
+	Decode(body io.ReadCloser, res interface{}) error
+}
+type Unmarshaler interface {
+	Unmarshal(byte interface{}, data proto.Message) error
+}
+type APIErrorHandler interface {
+	HandleAPIError(res interface{}) error
+}
+
 type Client interface {
 	Get(url string, data proto.Message) error
 	Post(url string, body interface{}, data proto.Message) error
-	HandleAPIError(res interface{}) error
-	Decode(body io.ReadCloser, res interface{}) error
-	Unmarshal(byte interface{}, data proto.Message) error
 }
 
 type client struct{}
 
 func NewClient() *client {
-	return &client{}
+	return new(client)
 }
 
 //Get send GET HTTP request

@@ -8,7 +8,8 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-const jwt = "Bearer 123"
+// test purpose
+const JWT = "Bearer 123"
 
 type Authentication struct {
 	Authorization string
@@ -33,7 +34,7 @@ func (a *Authentication) Auth(ctx context.Context) error {
 	if val, ok := md["authorization"]; ok {
 		token = val[0]
 	}
-	if token != jwt {
+	if token != JWT {
 		return status.Errorf(codes.Unauthenticated, "invalid token")
 	}
 	return nil

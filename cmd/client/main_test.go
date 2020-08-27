@@ -7,6 +7,8 @@ import (
 	"path"
 	"testing"
 
+	"github.com/mrdulin/grpc-go-cnode/internal/utils"
+
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 
 	"google.golang.org/grpc"
@@ -18,12 +20,13 @@ const (
 )
 
 func TestHealthCheckService_Integration(t *testing.T) {
+	utils.MarkedAsIntegrationTest(t)
 	dir, err := os.Getwd()
 	if err != nil {
 		t.Fatal(err)
 	}
 	certFile := path.Join(dir, "../../assets/server.crt")
-	creds, err := credentials.NewClientTLSFromFile(certFile, "server.grpc.io")
+	creds, err := credentials.NewClientTLSFromFile(certFile, "localhost")
 	if err != nil {
 		log.Fatal(err)
 	}

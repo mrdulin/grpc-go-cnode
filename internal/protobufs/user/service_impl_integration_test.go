@@ -38,7 +38,7 @@ func setup() {
 		log.Fatal(err)
 	}
 	certFile := path.Join(dir, "../../../assets/server.crt")
-	creds, err := credentials.NewClientTLSFromFile(certFile, "server.grpc.io")
+	creds, err := credentials.NewClientTLSFromFile(certFile, "localhost")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -8,6 +8,8 @@ import (
 	"path"
 	"strings"
 
+	"google.golang.org/grpc/reflection"
+
 	"github.com/mrdulin/grpc-go-cnode/configs"
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic"
 	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
@@ -42,6 +44,8 @@ func main() {
 	//if err != nil {
 	//	log.Fatalf("failed to listen: %v", err)
 	//}
+
+	// create TLS server
 	dir, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
@@ -56,16 +60,22 @@ func main() {
 		grpc.Creds(creds),
 		grpc.UnaryInterceptor(interceptors.NewUnaryInterceptor(logger)),
 	)
+	// health check
 	hs := health.NewServer()
 	hs.SetServingStatus("", healthpb.HealthCheckResponse_SERVING)
 	healthpb.RegisterHealthServer(grpcServer, hs)
 
+	// reflection
+	reflection.Register(grpcServer)
+
+	// application services
 	httpClient := api.NewClient()
 	userServiceImpl := user.NewUserServiceImpl(httpClient, baseurl)
 	topicServiceImpl := topic.NewTopicServiceImpl(httpClient, baseurl)
 	user.RegisterUserServiceServer(grpcServer, userServiceImpl)
 	topic.RegisterTopicServiceServer(grpcServer, topicServiceImpl)
 
+	// create mux for handling gRPC and HTTP request
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
 		writer.WriteHeader(http.StatusOK)

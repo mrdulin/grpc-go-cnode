@@ -19,7 +19,7 @@ var (
 )
 
 type (
-	validateAccessTokenRequestPayload struct {
+	ValidateAccessTokenRequestPayload struct {
 		AccessToken string `json:"accesstoken"`
 	}
 )
@@ -59,7 +59,7 @@ func (svc *userServiceImpl) ValidateAccessToken(ctx context.Context, in *Validat
 	}
 	url := svc.BaseURL + "/accesstoken"
 	var res ValidateAccessTokenResponse
-	err = svc.HttpClient.Post(url, &validateAccessTokenRequestPayload{AccessToken: in.Accesstoken}, &res)
+	err = svc.HttpClient.Post(url, &ValidateAccessTokenRequestPayload{AccessToken: in.Accesstoken}, &res)
 	if err != nil {
 		fmt.Println(err)
 		return nil, ErrValidateAccessToken
