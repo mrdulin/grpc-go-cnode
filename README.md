@@ -3,9 +3,9 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/mrdulin/grpc-go-cnode)](https://goreportcard.com/report/github.com/mrdulin/grpc-go-cnode)
 ![GitHub](https://img.shields.io/github/license/mrdulin/grpc-go-cnode)
 
-A Go gRPC server for [CNode](https://cnodejs.org) community built on the top of RESTful API.
+A Go gRPC server for [CNode](https://cnodejs.org) community built on the top of [RESTful API](https://cnodejs.org/api).
 
-*This project just for teaching, DON'T use in production.*
+*This project is just for teaching, NOT production ready.*
 
 After modifying the `.proto` files, need to re-compile protocol buffers.
 It will generate the service interfaces, models for the server side and service interfaces for client side.
@@ -19,6 +19,7 @@ Features:
 * Per RPC call authentication, check [auth.go](./internal/utils/auth/auth.go)
 * TLS connection with self-signed credentials
 * Support constraint rules and validators for Protocol buffer, check [here](./internal/protobufs/user/service.proto)
+* Integration and unit testings.
 
 Compile protocol buffers:
 

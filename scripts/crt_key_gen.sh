@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "generating credentials and private key for server and client..."
+echo "generating certificates and private key for server and client..."
 openssl genrsa -out ./assets/server.key 2048
 
 openssl req -new -x509 -days 3650 \
