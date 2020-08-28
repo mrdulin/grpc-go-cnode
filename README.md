@@ -19,6 +19,7 @@ Features:
 * Per RPC call authentication, check [auth.go](./internal/utils/auth/auth.go)
 * TLS connection with self-signed credentials
 * Support constraint rules and validators for Protocol buffer, check [here](./internal/protobufs/user/service.proto)
+* Server reflection, check [GRPC Server Reflection Protocol](https://github.com/grpc/grpc/blob/master/doc/server-reflection.md)
 * Integration and unit testings.
 
 Compile protocol buffers:
@@ -50,6 +51,16 @@ Run unit testings:
 
 ```bash
 make test-unit
+```
+
+List all gRPC services using [grpcurl](https://github.com/fullstorydev/grpcurl)
+
+```bash
+☁  grpc-go-cnode [master] grpcurl -insecure localhost:3000 list
+grpc.health.v1.Health
+grpc.reflection.v1alpha.ServerReflection
+topic.TopicService
+user.UserService
 ```
 
 More info, see [Makefile](./Makefile)
