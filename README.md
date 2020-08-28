@@ -53,10 +53,20 @@ Run unit testings:
 make test-unit
 ```
 
-List all gRPC services using [grpcurl](https://github.com/fullstorydev/grpcurl)
+List all gRPC services using [grpcurl](https://github.com/fullstorydev/grpcurl), using `-insecure` flag to skip server certificate and domain verification.
 
 ```bash
 ☁  grpc-go-cnode [master] grpcurl -insecure localhost:3000 list
+grpc.health.v1.Health
+grpc.reflection.v1alpha.ServerReflection
+topic.TopicService
+user.UserService
+```
+
+Or using `-cacert` flag to use a file containing trusted root certificates for verifying the server.
+
+```bash
+☁  grpc-go-cnode [master] grpcurl -cacert=./assets/server.crt localhost:3000 list
 grpc.health.v1.Health
 grpc.reflection.v1alpha.ServerReflection
 topic.TopicService
