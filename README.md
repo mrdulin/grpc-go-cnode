@@ -15,7 +15,7 @@ Features:
 
 * HTTPs server and gRPC server share same listening address and port.
 * Print access logs in unary call interceptor
-* gRPC Health check for all services based on [GRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
+* gRPC Health check for entire server based on [GRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
 * Per RPC call authentication, check [auth.go](./internal/utils/auth/auth.go)
 * TLS connection with self-signed credentials
 * Support constraint rules and validators for Protocol buffer, check [here](./internal/protobufs/user/service.proto)
