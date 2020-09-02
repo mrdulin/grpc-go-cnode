@@ -2,15 +2,18 @@ package main
 
 import (
 	"fmt"
-  "go.opencensus.io/examples/exporter"
-  "go.opencensus.io/plugin/ocgrpc"
-  "go.opencensus.io/stats/view"
-  "go.opencensus.io/zpages"
-  "log"
+	"log"
 	"net/http"
 	"os"
 	"path"
 	"strings"
+
+	"contrib.go.opencensus.io/exporter/stackdriver"
+	"go.opencensus.io/examples/exporter"
+	"go.opencensus.io/plugin/ocgrpc"
+	"go.opencensus.io/stats/view"
+	"go.opencensus.io/trace"
+	"go.opencensus.io/zpages"
 
 	"google.golang.org/grpc/reflection"
 
@@ -21,6 +24,7 @@ import (
 	api "github.com/mrdulin/grpc-go-cnode/internal/utils/http"
 	"github.com/mrdulin/grpc-go-cnode/internal/utils/interceptors"
 	"github.com/spf13/viper"
+	"google.golang.org/api/option"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/grpclog"
@@ -40,21 +44,33 @@ func init() {
 
 func main() {
 
-  // Start z-Pages server.
-  go func() {
-    mux := http.NewServeMux()
-    zpages.Handle(mux, "/debug")
-    log.Fatal(http.ListenAndServe("127.0.0.1:8081", mux))
-  }()
+	// Start z-Pages server.
+	go func() {
+		mux := http.NewServeMux()
+		zpages.Handle(mux, "/debug")
+		log.Fatal(http.ListenAndServe("127.0.0.1:8081", mux))
+	}()
 
-  // Register stats and trace exporters to export
-  // the collected data.
-  view.RegisterExporter(&exporter.PrintExporter{})
+	stackdriverExporter, err := stackdriver.NewExporter(stackdriver.Options{
+		ProjectID: conf.GetString(configs.GOOGLE_CLOUD_PROJECT),
+		TraceClientOptions: []option.ClientOption{
+			option.WithCredentialsFile(conf.GetString(configs.TRACE_ADMIN_CREDENTIAL_FILE)),
+		},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-  // Register the views to collect server request count.
-  if err := view.Register(ocgrpc.DefaultServerViews...); err != nil {
-    log.Fatal(err)
-  }
+	// Register stats and trace exporters to export
+	// the collected data.
+	trace.RegisterExporter(stackdriverExporter)
+	trace.ApplyConfig(trace.Config{DefaultSampler: trace.AlwaysSample()})
+	view.RegisterExporter(&exporter.PrintExporter{})
+
+	// Register the views to collect server request count.
+	if err := view.Register(ocgrpc.DefaultServerViews...); err != nil {
+		log.Fatal(err)
+	}
 
 	port := conf.GetString(configs.PORT)
 	baseurl := conf.GetString(configs.BASE_URL)
@@ -78,7 +94,7 @@ func main() {
 		log.Fatal(err)
 	}
 	grpcServer := grpc.NewServer(
-	  grpc.StatsHandler(&ocgrpc.ServerHandler{}),
+		grpc.StatsHandler(&ocgrpc.ServerHandler{}),
 		grpc.Creds(creds),
 		grpc.UnaryInterceptor(interceptors.NewUnaryInterceptor(logger)),
 	)

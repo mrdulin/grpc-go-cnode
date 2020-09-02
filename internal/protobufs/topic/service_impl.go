@@ -38,7 +38,7 @@ func (t *topicServiceImpl) GetTopicById(ctx context.Context, in *GetTopicByIdReq
 	}
 	urlValues.Add("mdrender", in.Mdrender)
 	base.RawQuery = urlValues.Encode()
-	err = t.HttpClient.Get(base.String(), &res)
+	err = t.HttpClient.Get(ctx, base.String(), &res)
 	if err != nil {
 		fmt.Println(err)
 		return nil, ErrGetTopicById
@@ -59,7 +59,7 @@ func (t *topicServiceImpl) GetTopicsByPage(ctx context.Context, in *GetTopicsByP
 		return nil, ErrGetTopicsByPage
 	}
 	base.RawQuery = v.Encode()
-	err = t.HttpClient.Get(base.String(), &res)
+	err = t.HttpClient.Get(ctx, base.String(), &res)
 	if err != nil {
 		fmt.Println(err)
 		return nil, ErrGetTopicsByPage

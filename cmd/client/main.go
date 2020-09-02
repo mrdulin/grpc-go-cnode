@@ -1,21 +1,22 @@
 package main
 
 import (
-  "context"
-  "fmt"
-  "go.opencensus.io/examples/exporter"
-  "go.opencensus.io/plugin/ocgrpc"
-  "go.opencensus.io/stats/view"
-  "google.golang.org/grpc/credentials"
-  "log"
-  "time"
+	"context"
+	"fmt"
+	"log"
+	"time"
 
-  "github.com/mrdulin/grpc-go-cnode/configs"
+	"go.opencensus.io/examples/exporter"
+	"go.opencensus.io/plugin/ocgrpc"
+	"go.opencensus.io/stats/view"
+	"google.golang.org/grpc/credentials"
 
-  "github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic"
+	"github.com/mrdulin/grpc-go-cnode/configs"
 
-  "github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
-  "google.golang.org/grpc"
+	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/topic"
+
+	"github.com/mrdulin/grpc-go-cnode/internal/protobufs/user"
+	"google.golang.org/grpc"
 )
 
 var (
@@ -30,15 +31,15 @@ func init() {
 }
 
 func main() {
-  // Register stats and trace exporters to export
-  // the collected data.
-  view.RegisterExporter(&exporter.PrintExporter{})
-  view.SetReportingPeriod(time.Second)
+	// Register stats and trace exporters to export
+	// the collected data.
+	view.RegisterExporter(&exporter.PrintExporter{})
+	view.SetReportingPeriod(time.Second)
 
-  // Register the view to collect gRPC client stats.
-  if err := view.Register(ocgrpc.DefaultClientViews...); err != nil {
-    log.Fatal(err)
-  }
+	// Register the view to collect gRPC client stats.
+	if err := view.Register(ocgrpc.DefaultClientViews...); err != nil {
+		log.Fatal(err)
+	}
 
 	creds, err := credentials.NewClientTLSFromFile("./assets/server.crt", "localhost")
 	if err != nil {
@@ -58,9 +59,9 @@ func main() {
 	topicServiceClient := topic.NewTopicServiceClient(conn)
 	// test
 	for {
-    testGetTopicById(topicServiceClient)
-    time.Sleep(2 * time.Second)
-  }
+		testGetTopicById(topicServiceClient)
+		time.Sleep(5 * time.Second)
+	}
 	//testGetTopicsByPage(topicServiceClient)
 }
 

@@ -42,7 +42,7 @@ func (svc *userServiceImpl) GetUserByLoginname(ctx context.Context, in *GetUserB
 	}
 	endpoint := svc.BaseURL + "/user/" + in.Loginname
 	var res GetUserByLoginnameResponse
-	err = svc.HttpClient.Get(endpoint, &res)
+	err = svc.HttpClient.Get(ctx, endpoint, &res)
 	if err != nil {
 		fmt.Println(err)
 		return nil, ErrGetUserByLoginname
@@ -59,7 +59,7 @@ func (svc *userServiceImpl) ValidateAccessToken(ctx context.Context, in *Validat
 	}
 	url := svc.BaseURL + "/accesstoken"
 	var res ValidateAccessTokenResponse
-	err = svc.HttpClient.Post(url, &ValidateAccessTokenRequestPayload{AccessToken: in.Accesstoken}, &res)
+	err = svc.HttpClient.Post(ctx, url, &ValidateAccessTokenRequestPayload{AccessToken: in.Accesstoken}, &res)
 	if err != nil {
 		fmt.Println(err)
 		return nil, ErrValidateAccessToken

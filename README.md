@@ -35,6 +35,9 @@ PORT: 3000
 ACCESS_TOKEN: <YOUR_ACCESS_TOKEN>
 GRPC_GO_LOG_SEVERITY_LEVEL: info
 GRPC_GO_LOG_VERBOSITY_LEVEL: 1
+GOOGLE_CLOUD_PROJECT: <YOUR_GCP_PROJECT_ID>
+TRACE_ADMIN_CREDENTIAL_FILE: <YOUR_TRACE_SERVICE_ACCOUNT_JSON_FILE_PATH>
+
 ```
 
 Start the HTTPs server and gRPC server:
@@ -78,8 +81,13 @@ You will see traces and stats exported on the stdout. You can also see the z-pag
 - Traces: http://localhost:8081/debug/tracez
 - RPCs: http://localhost:8081/debug/rpcz
 
-E.g. Server side gRPC server traces:
+E.g. Server side gRPC server traces from z-pages:
 
-![trace spans](./assets/trace_spans.png)
+![z-pages trace](./assets/z-pages-trace.png)
+
+
+Server side gPRC server trace from stackdriver trace:
+
+![stackdriver trace](./assets/stackdriver-trace.png)
 
 More info, see [Makefile](./Makefile)
