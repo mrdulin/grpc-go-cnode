@@ -13,14 +13,15 @@ Then, you can implement the interfaces of the services.
 
 Features:
 
-* HTTPs server and gRPC server share same listening address and port.
+* HTTPs server and gRPC server share same listening address and port
 * Print access logs in unary call interceptor
 * gRPC Health check for entire server based on [GRPC Health Checking Protocol](https://github.com/grpc/grpc/blob/master/doc/health-checking.md)
 * Per RPC call authentication, check [auth.go](./internal/utils/auth/auth.go)
 * TLS connection with self-signed credentials
 * Support constraint rules and validators for Protocol buffer, check [here](./internal/protobufs/user/service.proto)
 * Server reflection, check [GRPC Server Reflection Protocol](https://github.com/grpc/grpc/blob/master/doc/server-reflection.md)
-* Integration and unit testings.
+* Integration and unit testings
+* Distributed trace with z-pages and stackdriver exporter
 
 Compile protocol buffers:
 
