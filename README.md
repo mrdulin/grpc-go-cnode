@@ -73,4 +73,13 @@ topic.TopicService
 user.UserService
 ```
 
+You will see traces and stats exported on the stdout. You can also see the z-pages provided from the server:
+
+- Traces: http://localhost:8081/debug/tracez
+- RPCs: http://localhost:8081/debug/rpcz
+
+E.g. Server side gRPC server traces:
+
+![trace spans](./assets/trace_spans.png)
+
 More info, see [Makefile](./Makefile)

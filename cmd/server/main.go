@@ -2,7 +2,11 @@ package main
 
 import (
 	"fmt"
-	"log"
+  "go.opencensus.io/examples/exporter"
+  "go.opencensus.io/plugin/ocgrpc"
+  "go.opencensus.io/stats/view"
+  "go.opencensus.io/zpages"
+  "log"
 	"net/http"
 	"os"
 	"path"
@@ -35,6 +39,23 @@ func init() {
 }
 
 func main() {
+
+  // Start z-Pages server.
+  go func() {
+    mux := http.NewServeMux()
+    zpages.Handle(mux, "/debug")
+    log.Fatal(http.ListenAndServe("127.0.0.1:8081", mux))
+  }()
+
+  // Register stats and trace exporters to export
+  // the collected data.
+  view.RegisterExporter(&exporter.PrintExporter{})
+
+  // Register the views to collect server request count.
+  if err := view.Register(ocgrpc.DefaultServerViews...); err != nil {
+    log.Fatal(err)
+  }
+
 	port := conf.GetString(configs.PORT)
 	baseurl := conf.GetString(configs.BASE_URL)
 	if baseurl == "" {
@@ -57,6 +78,7 @@ func main() {
 		log.Fatal(err)
 	}
 	grpcServer := grpc.NewServer(
+	  grpc.StatsHandler(&ocgrpc.ServerHandler{}),
 		grpc.Creds(creds),
 		grpc.UnaryInterceptor(interceptors.NewUnaryInterceptor(logger)),
 	)
@@ -84,8 +106,8 @@ func main() {
 
 	log.Printf("gRPC and HTTP server are listening on port: %s\n", port)
 	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", port), certFile, keyFile, http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
-		fmt.Println("ProtoMajor:", request.ProtoMajor)
-		fmt.Println("Content-Type:", request.Header.Get("Content-Type"))
+		//fmt.Println("ProtoMajor:", request.ProtoMajor)
+		//fmt.Println("Content-Type:", request.Header.Get("Content-Type"))
 		if request.ProtoMajor != 2 {
 			mux.ServeHTTP(writer, request)
 			return
